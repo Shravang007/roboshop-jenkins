@@ -1,5 +1,8 @@
 - name: Create Jenkins Jobs
   hosts: localhost
   connection: local
+  vars:
+    jobs:
+      - {{item}}
   roles:
     - jenkins-jobs
