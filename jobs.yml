@@ -9,6 +9,7 @@
       - user
       - shipping
       - payment
+      - frontend
       - dispatch
   roles:
     - jenkins-jobs
