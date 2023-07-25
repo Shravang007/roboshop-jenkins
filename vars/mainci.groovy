@@ -4,7 +4,8 @@ def call() {
         if (env.cibuild == "java") {
 
             stage('Build') {
-                    sh 'mvn package'
+                echo 'mvn package'
+                    //sh 'mvn package'
         }
     }
             stage('Unit tests') {
