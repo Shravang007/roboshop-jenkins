@@ -2,15 +2,15 @@
   hosts: localhost
   connection: local
   vars:
-    jobs:
+    sp_jobs:
       - roboshop-terraform
+      - roboshop-ansible
+    mp_jobs:
       - cart
       - catalogue
       - user
       - shipping
       - payment
       - frontend
-      - dispatch
   roles:
     - jenkins-jobs
-
