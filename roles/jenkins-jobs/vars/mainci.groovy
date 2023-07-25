@@ -1,36 +1,46 @@
 def call() {
-   node('workstation') {
+    pipeline {
 
-          if (env.cibuild == "java") {
+        agent {
+            node { label 'workstation'}
+        }
 
-              stage('Build') {
-                  sh 'mvn package'
-              }
-          }
+        stages {
 
-            stage('Unit Tests') {
-                    echo 'Unit Tests'
+            stage('Build') {
+                steps {
+                    sh 'mvn package'
+                }
+            }
+
+            stage('Unit tests') {
+                steps {
+                    echo 'unit tests'
+                    // sh 'mvn test'
+                }
             }
 
             stage('Code Analysis') {
-                    echo 'sonarqube'
+                steps {
+                    echo 'sonar'
                     // sh 'sonar-scanner -Dsonar.host.url=http://172.31.93.52:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.projectKey=frontend'
+                }
             }
 
             stage('Security Scans') {
-                    //Checkmarx Scan
+                steps {
                     echo 'Security Scans'
+                }
             }
 
-            if(env.TAG_NAME ==~ ".*") {
-                stage('Publish a Artifact') {
+            stage('Publish a Artifact') {
+                steps {
                     echo 'Publish a Artifact'
                 }
             }
 
-               stage('Publish a Artifact') {
-                    echo 'Publish a Artifact'
-            }
 
         }
+
     }
+}
