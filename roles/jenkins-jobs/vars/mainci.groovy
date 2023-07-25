@@ -2,8 +2,8 @@ def call() {
     node('workstation') {
 
         if (env.cibuild == "java") {
+
             stage('Build') {
-                steps {
                     sh 'mvn package'
         }
     }
@@ -30,4 +30,3 @@ def call() {
         }
 
     }
-}
