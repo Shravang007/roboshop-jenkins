@@ -1,9 +1,9 @@
 - name: Single Branch Pipeline Setup
   ansible.builtin.include_tasks:
     file: sp_job.yml
-  loop: "{{sp_jobs}}"
+  loop: "{{sp_job}}"
 
 - name: Multi Branch Pipeline Setup
   ansible.builtin.include_tasks:
     file: mp_job.yml
-  loop: "{{mp_jobs}}"
+  loop: "{{mp_job}}"
