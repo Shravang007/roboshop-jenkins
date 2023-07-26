@@ -10,7 +10,6 @@ def call() {
     }
             stage('Unit tests') {
                     echo 'unit tests'
-                sh 'ls -ltr'
                     // sh 'mvn test'
             }
 
@@ -23,9 +22,13 @@ def call() {
                     echo 'Security Scans'
             }
 
-            stage('Publish a Artifact') {
+         if (env.TAG_NAME ==~ ".*") {
+             stage('Publish a Artifact') {
 
-                    echo 'Publish a Artifact'
+                 echo 'Publish a Artifact'
+
+         }
+
             }
 
 
