@@ -85,11 +85,9 @@ def call() {
 
         if(env.TAG_NAME ==~ ".*") {
             stage('Publish an Artifact') {
-                if (env.cibuild == "nginx") {
-                    sh 'zip -r ${component}-${TAG_NAME}.zip *'
-
-                }
-
+                sh 'rm -f Jenkinsfile'
+                sh 'echo ${TAG_NAME} >VERSION'
+                sh 'zip -r ${component}-${TAG_NAME}.zip *'
                 sh 'curl -v -u admin:admin123 --upload-file ${component}-${TAG_NAME}.zip http://172.31.88.112:8081/repository/${component}/${component}-${TAG_NAME}.zip'
             }
         }
