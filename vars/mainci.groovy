@@ -85,6 +85,10 @@ def call() {
 
         if(env.TAG_NAME ==~ ".*") {
             stage('Publish an Artifact') {
+                if (env.cibuild == "java") {
+                    sh 'mv target/${component}-1.0.jar ${component}.jar'
+                    sh 'rm -rf pom.xml src target'
+                }
                 sh 'rm -f Jenkinsfile'
                 sh 'echo ${TAG_NAME} >VERSION'
                 sh 'zip -r ${component}-${TAG_NAME}.zip *'
