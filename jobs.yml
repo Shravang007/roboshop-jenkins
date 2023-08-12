@@ -6,6 +6,7 @@
       - roboshop-terraform
       - roboshop-ansible
       - roboshop-kubernetes
+      - aws-parameter-init-container
     mp_jobs:
       - cart
       - catalogue
