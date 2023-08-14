@@ -6,7 +6,6 @@
       - roboshop-terraform
       - roboshop-ansible
       - roboshop-kubernetes
-      - aws-parameter-init-container
     mp_jobs:
       - cart
       - catalogue
@@ -14,5 +13,6 @@
       - shipping
       - payment
       - frontend
+      - aws-parameter-init-container
   roles:
     - jenkins-jobs
